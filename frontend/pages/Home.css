@@ -1,0 +1,133 @@
+.home-page {
+    min-height: calc(100vh - 69px);
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(300px, 0.75fr);
+    align-items: center;
+    gap: clamp(28px, 5vw, 72px);
+    width: min(100%, 1180px);
+    margin: 0 auto;
+    padding: clamp(46px, 7vw, 88px) clamp(20px, 5vw, 56px);
+}
+
+.home-intro {
+    max-width: 660px;
+}
+
+.home-label {
+    color: var(--accent-strong);
+    font-size: 0.82rem;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.home-intro h1 {
+    margin: 8px 0 14px;
+    color: var(--ink);
+    font-size: clamp(2.7rem, 6vw, 5rem);
+    line-height: 0.98;
+}
+
+.home-intro p {
+    max-width: 620px;
+    margin: 0;
+    color: var(--muted);
+    font-size: clamp(1rem, 1.5vw, 1.16rem);
+}
+
+.home-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 26px;
+}
+
+.primary-link,
+.secondary-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0 18px;
+    border-radius: 8px;
+    font-weight: 780;
+    text-decoration: none;
+    transition: 160ms ease;
+}
+
+.primary-link {
+    color: #061210;
+    background: var(--accent);
+}
+
+.primary-link:hover {
+    background: var(--accent-strong);
+    transform: translateY(-1px);
+}
+
+.secondary-link {
+    border: 1px solid var(--line);
+    color: var(--ink);
+    background: rgba(18, 24, 33, 0.6);
+}
+
+.secondary-link:hover {
+    border-color: rgba(45, 212, 191, 0.45);
+    color: var(--accent-strong);
+}
+
+.home-panel {
+    padding: 22px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--surface);
+    box-shadow: var(--shadow);
+}
+
+.home-panel h2 {
+    margin: 0 0 12px;
+    color: var(--ink);
+    font-size: 1.25rem;
+}
+
+.home-panel ul {
+    margin: 0;
+    padding-left: 20px;
+    color: var(--muted);
+}
+
+.home-panel li + li {
+    margin-top: 8px;
+}
+
+.home-panel li::marker {
+    color: var(--accent);
+}
+
+.home-data {
+    margin-top: 20px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+}
+
+.home-data span,
+.home-data strong {
+    display: block;
+}
+
+.home-data span {
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.home-data strong {
+    margin-top: 3px;
+    color: var(--ink);
+    font-size: 1.08rem;
+}
+
+@media (max-width: 820px) {
+    .home-page {
+        grid-template-columns: 1fr;
+        align-items: start;
+    }
+}

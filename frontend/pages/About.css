@@ -1,0 +1,147 @@
+.about-page {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 340px;
+    gap: clamp(28px, 5vw, 56px);
+    width: min(100%, 1180px);
+    margin: 0 auto;
+    padding: clamp(42px, 6vw, 72px) clamp(20px, 5vw, 56px);
+}
+
+.about-main {
+    max-width: 760px;
+}
+
+.about-main h1 {
+    margin: 8px 0 16px;
+    color: var(--ink);
+    font-size: clamp(2.1rem, 4vw, 3.4rem);
+    line-height: 1;
+}
+
+.about-main h2,
+.about-side h2 {
+    margin: 30px 0 10px;
+    color: var(--ink);
+    font-size: 1.22rem;
+}
+
+.about-side h2 {
+    margin-top: 0;
+}
+
+.about-main p,
+.about-main li,
+.about-side dd,
+.about-side p {
+    color: var(--muted);
+}
+
+.about-main p {
+    margin: 0;
+    font-size: 1.02rem;
+}
+
+.about-main p + p {
+    margin-top: 12px;
+}
+
+.about-main ol {
+    margin: 0;
+    padding-left: 22px;
+}
+
+.about-main li + li {
+    margin-top: 8px;
+}
+
+.about-main li::marker {
+    color: var(--accent);
+    font-weight: 800;
+}
+
+.about-metrics {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 18px;
+}
+
+.about-metrics div,
+.about-side {
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--surface);
+}
+
+.about-metrics div {
+    padding: 14px;
+}
+
+.about-metrics strong,
+.about-metrics span,
+.about-metrics b {
+    display: block;
+}
+
+.about-metrics strong {
+    color: var(--ink);
+}
+
+.about-metrics span {
+    margin-top: 2px;
+    color: var(--accent-strong);
+    font-size: 0.78rem;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.about-metrics b {
+    margin-top: 10px;
+    color: var(--ink);
+    font-size: 1.45rem;
+}
+
+.about-side {
+    align-self: start;
+    padding: 20px;
+}
+
+.about-side dl {
+    margin: 0;
+}
+
+.about-side div {
+    padding: 13px 0;
+    border-top: 1px solid var(--line);
+}
+
+.about-side dt {
+    color: var(--ink);
+    font-weight: 800;
+}
+
+.about-side dd {
+    margin: 3px 0 0;
+}
+
+.about-side p {
+    margin: 18px 0 0;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+}
+
+@media (max-width: 880px) {
+    .about-page {
+        grid-template-columns: 1fr;
+    }
+
+    .about-main {
+        max-width: none;
+    }
+}
+
+@media (max-width: 560px) {
+    .about-metrics {
+        grid-template-columns: 1fr;
+    }
+}

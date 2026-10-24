@@ -1,0 +1,57 @@
+# Environment files and credentials
+.env
+.env.*
+!.env.example
+!frontend/.env.example
+
+# Python environments, caches, and test output
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Frontend dependencies and generated builds
+node_modules/
+frontend/node_modules/
+frontend/dist/
+dist/
+*.tsbuildinfo
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+/package-lock.json
+
+# Local databases and runtime files
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
+*.log
+*.pid
+
+# Source-message datasets may contain personal identifiers
+data/**/*.csv
+data/**/*.json
+data/**/*.jsonl
+data/**/*_raw/
+data/**/*.zip
+data/**/*.tar.gz
+data/**/*.tar.bz2
+
+# Generated ML artifacts
+models/*.pkl
+models/*.joblib
+
+# Operating-system and editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
