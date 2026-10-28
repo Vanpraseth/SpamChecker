@@ -9,8 +9,8 @@ export default function BatchTable({ rows }) {
     if (!rows || rows.length === 0) return null;
     return (
         //wrapped table with main color scheme
-        <TableContainer component={Card} sx={{ background: '#101622', border: '1px solid rgba(156,178,214,0.2)', borderRadius: 2, boxShadow: 'none' }}>
-            <Table size="small">
+        <TableContainer component={Card} sx={{ maxWidth: '100%', overflowX: 'auto', background: '#101622', border: '1px solid rgba(156,178,214,0.2)', borderRadius: 2, boxShadow: 'none' }}>
+            <Table size="small" sx={{ minWidth: 700 }}>
                 <TableHead>
                     <TableRow>
                         {/*row name indexes*/}

@@ -19,6 +19,7 @@ import {
 	LinearProgress,
     FormControlLabel,
     Switch,
+	useMediaQuery,
 	Table,
 	TableBody,
 	TableCell,
@@ -96,6 +97,7 @@ class ErrorBoundary extends React.Component {
 
 //handles all the user input, backend comms, and model results
 export default function SpamDetection() {
+    const isSmallScreen = useMediaQuery("(max-width:599.95px)");
     const [text, setText] = useState("");
     const [loading, setLoading] = useState(false);
     const [result, setResult] = useState(null);
@@ -788,7 +790,7 @@ export default function SpamDetection() {
 						alignItems: "start",
 						}}
 						>
-							<Box>
+							<Box sx={{ minWidth: 0 }}>
 						<Box
 							sx={{
 								display: "flex",
@@ -799,7 +801,7 @@ export default function SpamDetection() {
 							<Box
 								sx={{
 									display: "grid",
-									gridTemplateColumns: { xs: "1fr", sm: "1fr 1fr" },
+									gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
 									width: { xs: "100%", sm: 340 },
 									p: 0.4,
 									borderRadius: 1.5,
@@ -840,7 +842,7 @@ export default function SpamDetection() {
 	            <TextField
 					fullWidth
 					multiline
-					minRows={batchMode ? 14 : 12}
+					minRows={batchMode ? (isSmallScreen ? 9 : 14) : (isSmallScreen ? 7 : 12)}
 					value={text}
 					onChange={(e) => setText(e.target.value)}
 					placeholder={
@@ -874,10 +876,11 @@ export default function SpamDetection() {
 					sx={{ mt: 2 }}
 				>
 					<Stack
-						direction={{ xs: "column", sm: "row" }}
+						direction="row"
 						spacing={1}
 						useFlexGap
 						flexWrap="wrap"
+						sx={{ width: { xs: "100%", md: "auto" } }}
 					>
 						{examples.map((ex) => (
 							<Chip
@@ -887,6 +890,7 @@ export default function SpamDetection() {
 								label={ex.label}
 								onClick={() => setText(ex.text)}
 								sx={{
+									flex: { xs: "1 1 130px", sm: "0 0 auto" },
 									background: "rgba(32,214,181,0.11)",
 									color: "#5eead4",
 									border: "1px solid rgba(32,214,181,0.28)",
@@ -916,7 +920,13 @@ export default function SpamDetection() {
 					</Stack>
 				</Stack>
 
-	            <Stack direction={{ xs: "column", sm: "row" }} justifyContent="flex-start" alignItems="center" spacing={1.25} sx={{ mt: 2.25 }}>
+	            <Stack
+					direction={{ xs: "column", sm: "row" }}
+					justifyContent="flex-start"
+					alignItems={{ xs: "stretch", sm: "center" }}
+					spacing={1.25}
+					sx={{ mt: 2.25 }}
+				>
 					<Button
 						variant="contained"
 						onClick={handleDetect}
@@ -947,7 +957,12 @@ export default function SpamDetection() {
 					{loading ? <CircularProgress size={22} color="inherit" aria-label="Scanning" /> : "Check message"}
               	</Button>
 
-              	<Tooltip title="Clear">
+				<Stack
+					direction="row"
+					spacing={1.25}
+					justifyContent={{ xs: "center", sm: "flex-start" }}
+				>
+					<Tooltip title="Clear">
 					<IconButton
 						aria-label="Clear"
 						onClick={handleClear}
@@ -989,6 +1004,7 @@ export default function SpamDetection() {
 					</IconButton>
 					</span>
 				</Tooltip>
+				</Stack>
 				<Menu
 					anchorEl={exportMenuAnchor}
 					open={Boolean(exportMenuAnchor)}
@@ -1053,7 +1069,8 @@ export default function SpamDetection() {
 
 					<Box
 						sx={{
-							minHeight: { xs: 180, lg: 260 },
+							minWidth: 0,
+							minHeight: { xs: 140, lg: 260 },
 							p: 1.75,
 							borderRadius: 2,
 							background: result && !batchMode ? resultColors.bg : "#101622",
